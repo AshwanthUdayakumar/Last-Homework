@@ -1,0 +1,37 @@
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("IMDB Dataset.csv")
+print(df.head(3))
+print(df.tail(3))
+print(df.info())
+print(df.shape)
+print(df.describe())
+print(df.describe(include='all'))
+print(df.isnull().sum())
+print(df.isnull().values.any())
+subset=df.iloc[40:75]
+print(subset)
+print(df.loc[df['No_of_Votes'].idxmax()])
+sns.boxplot(y=df['IMDB_Rating'])
+plt.title("Boxplot of IMDb Rating")
+plt.show()
+sns.boxplot(y=df['Runtime'])
+plt.title("Boxplot of Runtime")
+plt.show()
+sns.scatterplot(data=df,x='Runtime',y='IMDB_Rating')
+plt.title("Relationship Between IMDb Rating and Runtime")
+plt.show()
+print(df[['IMDB_Rating','Runtime']].corr())
+sns.histplot(df['IMDB_Rating'],kde=True)
+plt.title("Distribution of IMDb Rating")
+plt.show()
+sns.histplot(df['Runtime'],kde=True)
+plt.title("Distribution of Runtime")
+plt.show()
+sns.countplot(data=df,x='IMDB_Rating')
+plt.title("Number of Movies for Each IMDb Rating")
+plt.xticks(rotation=45)
+plt.show()
